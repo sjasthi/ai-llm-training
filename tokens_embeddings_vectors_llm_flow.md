@@ -1,7 +1,5 @@
 # 🧠 How AI Understands Language (Tokens, Embeddings, Vectors)
 
-*A simple guide for middle school students*
-
 ---
 
 ## 🌟 Introduction
