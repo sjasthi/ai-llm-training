@@ -1,0 +1,38 @@
+FYI.
+
+From: Jasthi, Jasthi (DI SW PLM LCS Q&D TC&POL) <siva.jasthi@siemens.com> 
+Sent: Tuesday, June 2, 2026 2:23 PM
+To: Yang, Yulin (DI SW PLM LCS CF SEPL SEF ACS) <yulinyang@siemens.com>
+Subject: RE: LCS AI initiatives
+
+
+
+[1] You can use AI to develop an app (this is expected). However, the app may not bring the AI/LLM into play during runtime.
+
+[2] http://plm-jasper.net.plm.eds.com/lcs-process-ai-projects/  (list of initiatives that are brining AI at runtime)
+
+[3] AI at runtime vs AI at build time
+
+http://plm-jasper.net.plm.eds.com/devils-advocate/?page=debate&id=da_7f3993ea40e1  (example of AI at runtime)
+
+[4] What models we can use for our AI applications? Provided by ai-attack (siemens governance framework)
+
+Secure API key: https://code.siemens.io/ai/  See the instructions for creating a API key through self-service
+
+Explore the free models here:  https://code.siemens.io/ai/models/#generally-available
+
+
+[5] GHCP license (siemens provided) - 
+May be good enough for our needs.
+All 59 AI initiatives that are in progress make use of VS Code + GHCP as the basis
+
+[6] Claude Code (only some people are participating in the pilot program)
+Everyone may be given this license at the end of Septemter (or the pilot may be dropped and we may settle with GHCP)
+
+[7] Submit AI initiative (you are using AI at runtime to address one of the SDLC steps).
+http://plm-jasper.net.plm.eds.com/lcs-process-ai-projects/?page=initiatives  (only tracks process / productivity initiatives; It doesn't track Product initiatives)
+
+[8] Using / Deploying AI as part of Teamcenter product that goes to the customers.
+- will be proposed by our Product Managers
+- there are already some initiatives in progress (MyPolarion)
+- PL Chat / BOM team is doing some initiatives
