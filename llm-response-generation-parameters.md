@@ -155,10 +155,10 @@ In agentic AI systems, generation parameters are not static. They are adjusted p
 
 ```mermaid
 graph TD
-    Q[User Query] --> P[Planner Node\n(temp=0.2)]
-    P --> R[Retriever Node\n(temp=0.3)]
-    R --> G[Generator Node\n(temp=0.7)]
-    G --> C[Critic Node\n(temp=0.1)]
+    Q[User Query] --> P[Planner Node<br/>(temp=0.2)]
+    P --> R[Retriever Node<br/>(temp=0.3)]
+    R --> G[Generator Node<br/>(temp=0.7)]
+    G --> C[Critic Node<br/>(temp=0.1)]
 
     C -->|Needs improvement| R
     C -->|Refine answer| G
