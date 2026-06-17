@@ -55,7 +55,10 @@ Understand what Large Language Models are and how they work — one token at a t
 
 ## Topics
 
+- What is LLM? Worlds next best word predictor
 - Tokens and tokenization
+- What can they do? What are they good at? AI/LLM usage patterns
+- Limitations of AI/LLM
 - Context windows
 - Transformer architecture basics
 - Training vs inference
