@@ -91,6 +91,6 @@ This list provides comprehensive coverage across:
 
 ---
 
-**Course:** Python for Machine Learning  
+**Course:** Python for AI
 **Instructor:** Siva Jasthi  
-**Institution:** Metro State University
+**Institution:** Learn and Help
