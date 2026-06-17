@@ -289,5 +289,3 @@ Choosing the right RAG architecture depends on four dimensions:
 Most production systems today are **hybrids**, combining multiple RAG patterns rather than relying on a single architecture.
 
 ---
-
-# End of Document
