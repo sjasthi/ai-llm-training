@@ -1,4 +1,4 @@
-# AI Prompt Patterns Reference Guide (Expanded Edition)
+# AI Prompt Patterns Reference Guide
 
 ## Introduction
 
