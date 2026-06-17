@@ -1,4 +1,4 @@
-# AI Prompt Patterns Reference Guide
+# Prompt Engineering Patterns: A Reference Guide
 
 ## Introduction
 
