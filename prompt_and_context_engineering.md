@@ -1,4 +1,4 @@
-# Prompt and Context Engineering Fundamentals for ICS499 Capstone
+# Prompt and Context Engineering
 
 ## Table of Contents
 1. [Introduction](#introduction)
