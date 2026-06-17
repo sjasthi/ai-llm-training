@@ -271,4 +271,3 @@ Example:
 
 ---
 
-# End of Guide
