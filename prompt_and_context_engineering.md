@@ -492,9 +492,9 @@ Evaluate each approach and recommend the best strategy for Year 1.
 
 ---
 
-## Questions for Capstone Projects
+## Questions to ask
 
-As you integrate LLMs into your capstone, consider:
+As you integrate LLMs into your project, consider:
 
 1. What is the task you're asking the model to perform?
 2. What domain knowledge does the model lack?
@@ -504,7 +504,4 @@ As you integrate LLMs into your capstone, consider:
 6. What constraints are non-negotiable for your use case?
 
 ---
-
-**Last Updated:** May 2026  
-**Audience:** ICS499 Capstone Students  
-**Author Note:** Prompt engineering is evolving rapidly. Test frameworks in your specific context and adapt based on your model and task requirements.
+Prompt engineering is evolving rapidly. Test frameworks in your specific context and adapt based on your model and task requirements.
