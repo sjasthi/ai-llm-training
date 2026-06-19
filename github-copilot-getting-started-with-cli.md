@@ -746,6 +746,7 @@ CONFIG FILES
 *Docs: https://docs.github.com/en/copilot/how-tos/copilot-cli*
 *Slash commands cheat sheet: https://github.blog/ai-and-ml/github-copilot/a-cheat-sheet-to-slash-commands-in-github-copilot-cli/*
 
+---
 
 # GitHub Copilot CLI Guide (Supplement)
 
