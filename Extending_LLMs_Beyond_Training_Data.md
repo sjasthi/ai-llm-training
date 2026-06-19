@@ -2,24 +2,19 @@
 
 ## Introduction
 
-Large Language Models (LLMs) are trained on massive datasets, but their
-built-in knowledge is static and limited to the time of training. To
-make them useful in real-world, dynamic environments, they are extended
-with external mechanisms that allow them to access, retrieve, compute,
-and interact with up-to-date or private information.
+Large Language Models (LLMs) are trained on massive datasets, but their built-in knowledge is static and limited to the time of training. To make them useful in real-world, dynamic environments, they are extended with external mechanisms that allow them to access, retrieve, compute, and interact with up-to-date or private information.
 
-This document introduces the major ways LLMs can be extended beyond
-their base training data.
+This document introduces the major techniques used to extend LLM capabilities beyond their base training data.
 
-------------------------------------------------------------------------
+---
 
 ## 1. Tool Calling (aka Function Calling)
 
-**Definition:**
+**Definition:**  
 Tool calling allows an LLM to invoke external capabilities (APIs, services, or runtimes) instead of relying only on its internal knowledge.
 
 **Examples of Tools:**
-- Web Search (Wikipedia, Bing, Google)
+- Web Search (Bing, Google, Wikipedia)
 - Calculator
 - Python execution
 - SQL query engine
@@ -28,109 +23,198 @@ Tool calling allows an LLM to invoke external capabilities (APIs, services, or r
 - Jira APIs
 
 **How it works (conceptual flow):**
-1. User asks a question
-2. LLM determines a tool is required
-3. LLM generates a structured tool call
-4. Tool executes and returns result
-5. LLM uses result to generate final answer
+1. User asks a question  
+2. LLM determines a tool is required  
+3. LLM generates a structured tool call  
+4. Tool executes and returns result  
+5. LLM uses the result to generate the final answer  
 
 **Typical Capability Mapping:**
 
-| Tool Type     | Example Usage        | Target System     |
-|--------------|---------------------|------------------|
-| API Call     | Get weather         | External Service |
-| Python       | Data analysis       | Runtime          |
-| SQL          | Query data          | Database         |
-| Search       | Latest information  | Search Engine    |
-| DevOps APIs  | Repo queries        | GitHub/GitLab    |
+| Tool Type    | Example Usage       | Target System      |
+|--------------|--------------------|-------------------|
+| API Call     | Get weather        | External Service  |
+| Python       | Data analysis      | Runtime           |
+| SQL          | Query data         | Database          |
+| Search       | Latest information | Search Engine     |
+| DevOps APIs  | Repo queries       | GitHub/GitLab     |
+
+**Example:**
+User: “What is the current temperature in Shoreview, MN?”  
+→ LLM calls Weather API  
+→ Returns real-time result  
 
 **Key Benefits:**
-- Enables real-time data access
-- Reduces hallucination
-- Extends LLM capability beyond training
+- Enables real-time data access  
+- Reduces hallucinations  
+- Extends LLM capabilities beyond training  
+
+**When to Use:**
+- Need real-time or external data  
+- Need integration with enterprise systems  
+
+**Avoid When:**
+- No reliable API/tool exists  
+- Data is static and already known  
+
+---
 
 ## 2. Retrieval-Augmented Generation (RAG)
 
-Uses vector search and retrieved documents to ground answers in private
-knowledge.
+**Definition:**  
+RAG enables LLMs to retrieve relevant documents from external sources and use them to generate grounded responses.
+
+**Key Concepts:**
+- Embeddings  
+- Vector databases  
+- Chunking  
+- Similarity search  
+- Context injection  
+
+**Popular Vector Databases:**
+- Pinecone  
+- Chroma  
+- Milvus  
+- Qdrant  
+- Weaviate  
+- pgvector  
+
+**Example:**
+User: “What is our company’s PTO policy?”  
+→ LLM retrieves internal documents  
+→ Generates answer grounded in company data  
+
+**When to Use:**
+- Private/company-specific data  
+- Frequently updated knowledge  
+
+**Avoid When:**
+- Dataset is small and static  
+- Latency must be minimal  
+
+---
 
 ## 3. MCP (Model Context Protocol)
 
-A standardized protocol for connecting LLMs to external tools and data
-sources.
+**Definition:**  
+A standardized protocol for connecting LLMs to external tools, systems, and enterprise platforms.
 
-## 4. Function Calling / Tool Use
+**Typical Use Cases:**
+- Enterprise integrations  
+- Multi-system orchestration  
+- Standardized tool access  
 
-LLMs request structured function execution instead of hallucinating
-answers.
+---
 
-## 5. Web Browsing / Agentic Search
+## 4. Web Browsing / Agentic Search
 
-Allows models to actively search and summarize current information.
+Allows LLMs to actively search for and summarize live information.
 
-## 6. Memory Systems
+**Use Cases:**
+- News  
+- Market trends  
+- Latest updates  
 
-Stores user preferences and long-term information across sessions.
+---
 
-## 7. Code Execution Environments
+## 5. Memory Systems
 
-Uses Python, SQL, and other runtimes for accurate computation.
+Stores user preferences and long-term context across sessions.
 
-## 8. Agent Frameworks
+**Use Cases:**
+- Personalization  
+- Conversational continuity  
 
-Coordinates multi-step reasoning and tool orchestration.
+---
 
-## 9. Prompt Engineering and In-Context Learning
+## 6. Code Execution Environments
 
--   Zero-shot prompting
--   One-shot prompting
--   Few-shot prompting
--   Chain-of-Thought prompting
--   Role prompting
--   Structured prompting
+Allows LLMs to run Python, SQL, or other code for precise computation.
 
-**Key idea:** Better prompts often produce dramatically better results
-without changing model weights.
+**Use Cases:**
+- Data analysis  
+- Calculations  
+- Transformations  
 
-## 10. Fine-Tuning and LoRA
+---
 
-Fine-tuning changes model behavior permanently while LoRA/PEFT provides
-lightweight adaptation.
+## 7. Agent Frameworks
 
-## 11. Embeddings and Vector Databases
+Coordinates multi-step reasoning and orchestrates multiple tools.
 
-Embeddings enable semantic search and power RAG systems.
+**Use Cases:**
+- Automation workflows  
+- Complex tasks  
+- Multi-step reasoning  
 
-Popular vector databases: - Pinecone - Chroma - Milvus - Qdrant -
-Weaviate - pgvector
+---
 
-## 12. Multi-Agent Systems
+## 8. Prompt Engineering and In-Context Learning
+
+Improves performance by structuring input prompts.
+
+**Techniques:**
+- Zero-shot  
+- One-shot  
+- Few-shot  
+- Chain-of-Thought  
+- Role prompting  
+- Structured prompting  
+
+**Key Insight:**  
+Better prompts often significantly improve results without changing model weights.
+
+---
+
+## 9. Fine-Tuning and LoRA
+
+**Definition:**
+- Fine-tuning modifies model behavior permanently  
+- LoRA/PEFT provides lightweight adaptation  
+
+**Use Cases:**
+- Domain-specific behavior  
+- Specialized outputs  
+
+**Trade-off:**
+- Requires training effort and cost  
+- Not suitable for frequently changing requirements  
+
+---
+
+## 10. Embeddings and Vector Databases
+
+Power semantic search and enable RAG systems.
+
+---
+
+## 11. Multi-Agent Systems
 
 Multiple specialized agents collaborate to solve complex tasks.
 
-## 13. Human-in-the-Loop
+---
 
-Humans approve or supervise critical AI decisions.
+## 12. Human-in-the-Loop
 
-------------------------------------------------------------------------
+Humans validate or approve AI decisions for critical tasks.
 
+---
 
 ## Comparison of Extension Techniques
 
-| Technique            | Retrains Model? | External Data? | Real-Time? | Cost       |
-|---------------------|----------------|----------------|-------------|------------|
-| Prompt Engineering  | No             | No             | Yes         | Very Low   |
-| Few-shot Learning   | No             | Temporary      | Yes         | Very Low   |
-| Tool/API Calls      | No             | Yes            | Yes         | Low        |
-| Function Calling    | No             | Yes            | Yes         | Low        |
-| RAG                 | No             | Yes            | Yes         | Low        |
-| MCP                 | No             | Yes            | Yes         | Low        |
-| Memory              | No             | Yes            | Yes         | Low        |
-| Code Execution      | No             | Runtime        | Yes         | Low        |
-| Agents              | No             | Yes            | Yes         | Medium     |
-| Fine-Tuning         | Yes            | Internalized   | No          | Medium     |
-| LoRA                | Yes            | Internalized   | No          | Medium     |
-| Full Training       | Yes            | Internalized   | No          | Very High  |
+| Technique           | Retrains Model? | Uses External Data? | Real-Time? | Cost       |
+|--------------------|----------------|--------------------|------------|------------|
+| Prompt Engineering | No             | No                 | Yes        | Very Low   |
+| Few-shot Learning  | No             | Temporary          | Yes        | Very Low   |
+| Tool/API Calls     | No             | Yes                | Yes        | Low        |
+| RAG                | No             | Yes                | Yes        | Low        |
+| MCP                | No             | Yes                | Yes        | Low        |
+| Memory             | No             | Yes                | Yes        | Low        |
+| Code Execution     | No             | Runtime            | Yes        | Low        |
+| Agents             | No             | Yes                | Yes        | Medium     |
+| Fine-Tuning        | Yes            | Internalized       | No         | Medium     |
+| LoRA               | Yes            | Internalized       | No         | Medium     |
+| Full Training      | Yes            | Internalized       | No         | Very High  |
 
 ---
 
@@ -150,43 +234,35 @@ Humans approve or supervise critical AI decisions.
 
 ## Choosing the Right Technique
 
-| Need                    | Recommended Technique |
-|-------------------------|----------------------|
-| Better answers          | Prompt Engineering   |
-| Current/Latest data     | API Calls            |
-| Company documents       | RAG                  |
-| Data Analysis           | Python Execution     |
-| Database Queries        | SQL                  |
-| Enterprise integrations | MCP                  |
-| Computation             | Code Execution       |
-| Personalization         | Memory               |
-| Domain specialization   | Fine-Tuning / LoRA   |
-| Automation workflows    | Agents               |
+| Need                    | Recommended Technique       |
+|-------------------------|-----------------------------|
+| Better answers          | Prompt Engineering          |
+| Current/latest data     | Tool/API Calls              |
+| Company documents       | RAG                         |
+| Data analysis           | Code Execution (Python)     |
+| Database queries        | SQL                         |
+| Enterprise integrations | MCP                         |
+| Computation             | Code Execution              |
+| Personalization         | Memory                      |
+| Domain specialization   | Fine-Tuning / LoRA          |
+| Multi-step automation   | Agents                      |
 
-Decision Flow:
+---
 
-``` text
-Need Better AI?
-    |
-    +-- Better behavior? --> Prompt Engineering / Fine-Tuning
-    |
-    +-- New knowledge?
-            |
-            +-- Live? --> APIs
-            |
-            +-- Private? --> RAG
-            |
-            +-- Compute? --> Code Execution
-            |
-            +-- Workflow? --> Agents
-            |
-            +-- Personalized? --> Memory
-            |
-            +-- Enterprise Systems? --> MCP
-```
+## Decision Guide
+
+| Goal                        | Approach                     |
+|-----------------------------|------------------------------|
+| Improve behavior            | Prompt Engineering / Fine-Tuning |
+| Add real-time knowledge     | Tool/API Calls               |
+| Use private data            | RAG                          |
+| Perform computation         | Code Execution               |
+| Automate workflows          | Agents                       |
+| Personalize experience      | Memory                       |
+| Integrate enterprise systems| MCP                          |
+
+---
 
 ## Final Thought
 
-Modern AI systems combine reasoning, retrieval, tools, memory,
-execution, and orchestration to extend LLM capabilities far beyond their
-original training data.
+Modern AI systems combine reasoning, retrieval, tools, memory, execution, and orchestration to extend LLM capabilities far beyond their original training data.
