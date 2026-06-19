@@ -1,11 +1,5 @@
 # AI Use Cases in DevOps
 
-## Version History
-
-| Version | Date | Author | Notes |
-|---|---|---|---|
-| 1.0 | 2026-06-19 | M365 Copilot | Initial comprehensive generic overview of AI use cases in DevOps |
-
 ## Purpose
 
 This document outlines common DevOps use cases and describes how Artificial Intelligence (AI) can be applied across the software delivery lifecycle. It is intended to be generic, vendor-neutral, and broadly applicable to organizations at different levels of DevOps maturity.
