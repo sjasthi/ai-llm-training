@@ -25,15 +25,15 @@ Embeddings enable semantic search and power RAG systems.
 Uses vector search and retrieved documents to ground answers in private
 knowledge.
 
-What is RAG?
-Why RAG is needed
-Embeddings
-Vector Databases
-Chunking strategies
-Similarity search
-Retrieval
-Context injection
-Answer generation
+-   What is RAG?
+-   Why RAG is needed
+-   Embeddings
+-   Vector Databases
+-   Chunking strategies
+-   Similarity search
+-   Retrieval
+-   Context injection
+-   Answer generation
 
 Popular vector databases: - Pinecone - Chroma - Milvus - Qdrant -
 Weaviate - pgvector
