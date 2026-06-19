@@ -1,94 +1,793 @@
-# AI Prompting Strategy for Large-Scale Software Development
+# AI Prompting Best Practices for Large Software Projects
 
-## Executive Summary
+## Monolithic Prompt vs. Iterative Development
 
-To effectively leverage AI coding assistants (e.g., GitHub Copilot, Claude Code, ChatGPT, Gemini), organizations must adopt a structured, architecture-first, iterative development approach.
+When building a software application with an AI coding assistant (GitHub Copilot, Claude Code, ChatGPT, Gemini, Cursor, etc.), one of the biggest decisions is whether to provide **one gigantic prompt** containing the entire project specification or to **develop the system iteratively with small focused prompts**.
 
-Recommendation:
-Do NOT generate entire applications in a single prompt.
+This document compares both approaches and recommends best practices for minimizing token consumption while maximizing code quality.
+
+---
+
+# Executive Summary
+
+**Recommendation:**
+
+> Design the entire system once, then build it incrementally.
+
+Do **not** ask the AI to generate the entire application in one enormous prompt.
+
 Instead:
-- Design the system architecture upfront
-- Store architecture and requirements as version-controlled documentation
-- Implement the system incrementally using cohesive, module-based prompts
-- Reuse documentation instead of repeating context
-- Generate only incremental changes
-- Continuously test, validate, and commit
 
-This approach reduces token consumption, improves code quality, and enhances maintainability.
+1. Design the architecture.
+2. Save the architecture in project documentation.
+3. Build one module at a time.
+4. Commit working code frequently.
+5. Iterate based on testing.
 
-## Core Principles
+This approach is more maintainable, less expensive, and produces better results.
 
-- Architecture First
-- Iterative Development
-- Cohesion Over Prompt Size
-- Minimize Context Repetition
-- Incremental Code Generation
-- Documentation as Source of Truth
-- Stateless Prompting Discipline
+---
 
-## Approach Comparison
-
-### Monolithic Prompt
-
-Advantages:
-- Quick start
-- Suitable for prototypes
-
-Limitations:
-- High token usage
-- Difficult debugging
-- Poor maintainability
-
-### Iterative Development (Recommended)
-
-Phases:
-1. Architecture
-2. Database
-3. Authentication
-4. Core modules
-5. Reports
-6. Deployment
-
-Advantages:
-- Better quality
-- Easier debugging
-- Lower cost
-
-## Cohesion-Based Prompting
-
-Group related features such as authentication, CRUD operations, or reporting into a single prompt to improve consistency and reuse.
-
-Avoid mixing unrelated tasks in one prompt.
-
-## Repository Documentation
-
-Maintain structured documentation in /docs:
-- requirements.md
-- architecture.md
-- database.md
-- api.md
-- security.md
-- coding-standards.md
-- deployment.md
-- testing.md
-
-## Prompt Pattern
+# Option 1: Monolithic Prompt
 
 Example:
-Read architecture.md
-Implement Authentication module
-Generate only modified files
 
-## Token Optimization
+```
+Build a complete Student Information System.
 
-- Avoid repetition
-- Use diffs
-- Group related tasks
+Features:
+- Authentication
+- Authorization
+- Dashboard
+- Student Management
+- Teacher Management
+- Attendance
+- Grades
+- Reports
+- Notifications
+- Email
+- Admin
+- Settings
+- Analytics
+- REST API
+- Docker
+- CI/CD
+- Unit Tests
+- Production Deployment
+```
 
-## Workflow
+The AI attempts to generate everything in one session.
 
-Requirements → Architecture → Database → Modules → Testing → Deployment
+## Advantages
 
-## Final Recommendation
+* Easy to start.
+* Good for prototypes.
+* Useful for very small projects.
 
-Adopt iterative, architecture-driven prompting with cohesive modules and strong documentation practices.
+## Disadvantages
+
+* Extremely high token consumption.
+* Large context windows.
+* Difficult to debug.
+* Regeneration wastes tokens.
+* Changes require regenerating large sections.
+* AI may become inconsistent across modules.
+
+---
+
+# Option 2: Iterative Development
+
+Instead of generating everything, divide the project into modules.
+
+Example roadmap:
+
+```
+Phase 1
+--------
+Architecture
+
+Phase 2
+--------
+Database
+
+Phase 3
+--------
+Authentication
+
+Phase 4
+--------
+Authorization
+
+Phase 5
+--------
+Dashboard
+
+Phase 6
+--------
+Student Module
+
+Phase 7
+--------
+Teacher Module
+
+Phase 8
+--------
+Reports
+
+Phase 9
+--------
+Deployment
+```
+
+Each prompt is small and focused.
+
+Example:
+
+```
+Implement Student CRUD.
+
+Use the existing architecture.
+
+Generate only changed files.
+```
+
+Advantages:
+
+* Lower token usage.
+* Easier debugging.
+* Better testing.
+* Easier code review.
+* Easier maintenance.
+* Better consistency.
+
+---
+
+# The Best Practice: Architecture First
+
+Spend time designing the application before generating code.
+
+Create a document such as:
+
+```
+SYSTEM_DESIGN.md
+```
+
+Include:
+
+* Vision
+* Goals
+* Users
+* User Roles
+* Features
+* Use Cases
+* Navigation
+* Database Schema
+* APIs
+* Security
+* Authentication
+* Authorization
+* Folder Structure
+* Coding Standards
+* Logging
+* Deployment
+* Testing Strategy
+* Error Handling
+
+This becomes the single source of truth.
+
+---
+
+# Repository Documentation
+
+Keep documentation inside the repository.
+
+Example:
+
+```
+docs/
+
+requirements.md
+
+architecture.md
+
+database.md
+
+api.md
+
+coding-standards.md
+
+security.md
+
+deployment.md
+
+testing.md
+
+ui-guidelines.md
+```
+
+Every AI prompt can reference these documents instead of repeating requirements.
+
+---
+
+# Prompt Pattern
+
+Instead of:
+
+```
+Build the complete system.
+```
+
+Use:
+
+```
+Read architecture.md.
+
+Implement Authentication.
+
+Generate only new or changed files.
+
+Follow existing conventions.
+
+Do not redesign the architecture.
+```
+
+Later:
+
+```
+Read architecture.md.
+
+Implement Student Module.
+
+Generate only changed files.
+```
+
+Then:
+
+```
+Implement Teacher Module.
+```
+
+Then:
+
+```
+Implement Reports.
+```
+
+---
+
+# Save Tokens by Avoiding Repetition
+
+Bad:
+
+```
+Authentication:
+...
+
+Database:
+...
+
+Architecture:
+...
+
+Coding Standards:
+...
+
+Folder Structure:
+...
+
+Repeat every prompt...
+```
+
+Good:
+
+```
+Read project documentation.
+
+Implement Attendance Module.
+
+Generate changed files only.
+```
+
+---
+
+# Ask for Diffs Instead of Regeneration
+
+Avoid:
+
+```
+Generate the entire project again.
+```
+
+Prefer:
+
+```
+Modify only these files:
+
+- auth.js
+- login.php
+
+Leave everything else unchanged.
+```
+
+This significantly reduces token usage.
+
+---
+
+# Keep Prompts Focused
+
+Good:
+
+```
+Add pagination to Student List.
+```
+
+Good:
+
+```
+Add export-to-CSV functionality.
+```
+
+Good:
+
+```
+Fix validation bug in registration.
+```
+
+Avoid:
+
+```
+Rewrite the entire application with improvements.
+```
+
+---
+
+# Generate Documentation First
+
+Before coding, generate:
+
+* Requirements
+* Database Design
+* API Specification
+* Folder Structure
+* UI Navigation
+* Deployment Plan
+* Testing Plan
+
+Then generate code.
+
+The AI performs much better when design decisions are already documented.
+
+---
+
+# Recommended AI Workflow
+
+```
+Requirements
+        ↓
+Architecture
+        ↓
+Database
+        ↓
+Folder Structure
+        ↓
+Authentication
+        ↓
+Authorization
+        ↓
+Core Modules
+        ↓
+Reports
+        ↓
+Testing
+        ↓
+Deployment
+        ↓
+Optimization
+```
+
+Never jump directly from "idea" to "entire application."
+
+---
+
+# Estimated Token Consumption
+
+## Monolithic
+
+```
+Requirements      20,000
+
+Generated Code    40,000
+
+Corrections       15,000
+
+Regeneration      20,000
+
+-------------------------
+
+Total             95,000 tokens
+```
+
+---
+
+## Iterative
+
+```
+Architecture       5,000
+
+Database           2,000
+
+Authentication     2,500
+
+Users              2,000
+
+Dashboard          2,000
+
+Reports            2,000
+
+Deployment         2,000
+
+-------------------------
+
+Total             ~18,000 tokens
+```
+
+Savings can exceed **70–80%** for medium and large projects.
+
+---
+
+# Additional Best Practices
+
+## Use Version Control
+
+Commit after every successful feature.
+
+```
+git commit -m "Completed Authentication"
+```
+
+Never rely on AI conversation history as the only source of truth.
+
+---
+
+## Keep AI Stateless
+
+Treat every prompt as if the AI has forgotten everything.
+
+Reference documentation instead of conversation history.
+
+---
+
+## Generate Small Chunks
+
+Generate:
+
+* One API
+* One page
+* One class
+* One service
+* One feature
+
+Avoid generating hundreds of files at once.
+
+---
+
+## Review Before Continuing
+
+Compile.
+
+Run tests.
+
+Fix bugs.
+
+Commit.
+
+Only then move to the next feature.
+
+---
+
+# When Grouping Prompts Is Better
+
+Many developers assume that the smallest possible prompts always minimize token consumption. Surprisingly, that is not always true.
+
+There is a fixed overhead associated with every prompt:
+
+* Project context
+* Architecture
+* Coding standards
+* Existing APIs
+* Folder structure
+* Naming conventions
+
+If three separate prompts all require the same context, that context is repeated three times.
+
+## Example
+
+### Three Separate Prompts
+
+```
+Read architecture.md.
+
+Implement Login.
+```
+
+```
+Read architecture.md.
+
+Implement Registration.
+```
+
+```
+Read architecture.md.
+
+Implement Forgot Password.
+```
+
+Each prompt must reload the same architectural context.
+
+Approximate token usage:
+
+```
+Architecture   3,000
+Task             300
+
+Architecture   3,000
+Task             300
+
+Architecture   3,000
+Task             300
+
+----------------------
+
+Total ≈ 9,900 tokens
+```
+
+---
+
+### One Grouped Prompt
+
+```
+Read architecture.md.
+
+Implement:
+
+- Login
+- Registration
+- Forgot Password
+
+Generate only changed files.
+```
+
+Approximate token usage:
+
+```
+Architecture   3,000
+Tasks            900
+
+----------------------
+
+Total ≈ 3,900 tokens
+```
+
+The grouped prompt consumes significantly fewer tokens because the shared context is loaded only once.
+
+---
+
+# The Cohesion Principle
+
+Group together features that naturally belong together.
+
+Examples:
+
+## Authentication Module
+
+* Login
+* Logout
+* Registration
+* Password Reset
+* Email Verification
+* JWT Refresh
+
+These features share:
+
+* Database tables
+* Services
+* Security logic
+* Validation
+* API endpoints
+
+Generating them together usually produces cleaner code.
+
+---
+
+## Student Module
+
+* Student CRUD
+* Search
+* Filter
+* Pagination
+* Import
+* Export
+
+These features operate on the same entities and services and benefit from being generated together.
+
+---
+
+## Reports Module
+
+* Attendance Report
+* Grade Report
+* CSV Export
+* PDF Export
+* Charts
+* Filters
+
+Again, these belong together and should typically be generated in one prompt.
+
+---
+
+# Bad Prompt Grouping
+
+Avoid combining unrelated tasks.
+
+Example:
+
+```
+Implement:
+
+- Login
+- Docker Deployment
+- Analytics Dashboard
+- Email Templates
+- Teacher CRUD
+- CI/CD Pipeline
+```
+
+These tasks involve unrelated concerns and require different reasoning contexts.
+
+The resulting code is often less consistent and harder to maintain.
+
+---
+
+# Think in Vertical Slices
+
+Instead of generating:
+
+```
+Frontend
+Backend
+Database
+```
+
+Generate:
+
+```
+Student Management
+
+- UI
+- API
+- Database
+- Validation
+- Tests
+```
+
+A complete feature can be designed more coherently than isolated layers.
+
+---
+
+# Architectural Consistency
+
+Grouped prompts allow the AI to design reusable components.
+
+Instead of generating separate services:
+
+```
+login_service
+
+register_service
+
+password_service
+```
+
+A grouped prompt often produces:
+
+```
+AuthService
+
+login()
+
+register()
+
+forgotPassword()
+
+resetPassword()
+
+verifyEmail()
+```
+
+The resulting architecture is cleaner and more reusable.
+
+---
+
+# AI Optimization
+
+Large Language Models reason over the entire prompt simultaneously.
+
+When related requirements appear together, the model can:
+
+* Reuse helper functions
+* Share validation logic
+* Eliminate duplicate code
+* Create reusable APIs
+* Use consistent naming
+* Produce a cleaner architecture
+
+Splitting tightly related tasks into many tiny prompts often loses these advantages.
+
+---
+
+# Recommended Prompt Granularity
+
+| Prompt Size                                 | Recommendation          |
+| ------------------------------------------- | ----------------------- |
+| Entire application                          | ❌ Avoid                 |
+| Large subsystem                             | ⚠️ Sometimes acceptable |
+| One cohesive feature/module                 | ✅ Best choice           |
+| Tiny bug fix                                | ✅ Good                  |
+| One trivial task repeated hundreds of times | ❌ Inefficient           |
+
+---
+
+# Recommended Workflow
+
+```
+Requirements
+        ↓
+Architecture
+        ↓
+Database Design
+        ↓
+Authentication Module
+        ↓
+User Management Module
+        ↓
+Student Management Module
+        ↓
+Teacher Management Module
+        ↓
+Reports Module
+        ↓
+Notifications
+        ↓
+Deployment
+        ↓
+Optimization
+```
+
+Each module should be implemented with a single prompt that contains multiple closely related tasks.
+
+---
+
+# Final Guideline
+
+Do **not** optimize for the smallest possible prompt.
+
+Instead, optimize for **cohesion**.
+
+A good prompt should implement one logical feature or subsystem containing several related capabilities that naturally share architecture, services, data models, and APIs.
+
+This approach minimizes repeated context, reduces overall token consumption, improves architectural consistency, and produces higher-quality software than either a single monolithic prompt or hundreds of tiny prompts.
+
+
+# Final Recommendation
+
+For professional software development:
+
+* ✅ Design the complete system first.
+* ✅ Store architecture in Markdown documents.
+* ✅ Build incrementally using small prompts.
+* ✅ Generate only changed files.
+* ✅ Reuse documentation instead of repeating requirements.
+* ✅ Commit working code frequently.
+* ✅ Test continuously.
+
+This approach minimizes token consumption, improves maintainability, reduces AI hallucinations, and produces significantly higher-quality software than a single monolithic prompt.
