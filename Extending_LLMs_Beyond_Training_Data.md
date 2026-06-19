@@ -13,10 +13,35 @@ their base training data.
 
 ------------------------------------------------------------------------
 
-## 1. Tool / API Calls
+## 1. Tool Calling (aka Function Calling) 
+
+Tools is anything the LLM can invoke
+
+Examples:
+
+Search (e.g. Wikipedia Search or Web Search)
+Calculator
+Python
+SQL
+Weather API
+GitHub API
 
 LLMs can interact with external systems through APIs to fetch real-time
 or specialized data.
+
+External Capabilities
+
+        Tool
+         │
+ ┌───────┼──────────┐
+ │       │          │
+API    Python     SQL
+ │       │          │
+Weather  Pandas   Database
+GitHub   NumPy    Warehouse
+Jira     Plotting
+
+
 
 ## 2. Retrieval-Augmented Generation (RAG)
 
@@ -109,6 +134,19 @@ Humans approve or supervise critical AI decisions.
   Full Training        Yes               Internalized     No           Very High
 
 ------------------------------------------------------------------------
+
+# Capability and Typical Target
+
+| Capability       | Typical Target          |
+| ---------------- | ----------------------- |
+| API Call         | External Service        |
+| Function Call    | Registered Tool         |
+| Python Execution | Runtime                 |
+| SQL Invocation   | Database                |
+| Web Search       | Search Engine           |
+| RAG              | Vector Database         |
+| MCP              | External Tool Ecosystem |
+
 
 # Choosing the Right Technique
 
