@@ -115,14 +115,18 @@ Humans approve or supervise critical AI decisions.
   Need                       Recommended Technique
   -------------------------- -----------------------
   Better answers             Prompt Engineering
-  Current information        Tool/API Calls
+  Current/Latest data        API Calls
   Company documents          RAG
+  Data Analysis              Python Code Execution
+  Database Queries           SQL Invocation
   Enterprise integrations    MCP
   Computation                Code Execution
-  Personalization            Memory
+  User Personalization       Memory
+  Domain Specialization      Fine-Tuning
   Multi-step automation      Agents
   Domain-specific behavior   Fine-Tuning / LoRA
 
+  
 Decision Flow:
 
 ``` text
