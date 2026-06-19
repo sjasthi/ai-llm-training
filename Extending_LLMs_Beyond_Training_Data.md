@@ -20,8 +20,23 @@ or specialized data.
 
 ## 2. Retrieval-Augmented Generation (RAG)
 
+Embeddings enable semantic search and power RAG systems.
+
 Uses vector search and retrieved documents to ground answers in private
 knowledge.
+
+What is RAG?
+Why RAG is needed
+Embeddings
+Vector Databases
+Chunking strategies
+Similarity search
+Retrieval
+Context injection
+Answer generation
+
+Popular vector databases: - Pinecone - Chroma - Milvus - Qdrant -
+Weaviate - pgvector
 
 ## 3. MCP (Model Context Protocol)
 
@@ -66,18 +81,11 @@ without changing model weights.
 Fine-tuning changes model behavior permanently while LoRA/PEFT provides
 lightweight adaptation.
 
-## 11. Embeddings and Vector Databases
-
-Embeddings enable semantic search and power RAG systems.
-
-Popular vector databases: - Pinecone - Chroma - Milvus - Qdrant -
-Weaviate - pgvector
-
-## 12. Multi-Agent Systems
+## 11. Multi-Agent Systems
 
 Multiple specialized agents collaborate to solve complex tasks.
 
-## 13. Human-in-the-Loop
+## 12. Human-in-the-Loop
 
 Humans approve or supervise critical AI decisions.
 
