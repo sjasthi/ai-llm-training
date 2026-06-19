@@ -745,3 +745,174 @@ CONFIG FILES
 *Reference: GitHub Copilot CLI — Public Preview (2025–2026)*
 *Docs: https://docs.github.com/en/copilot/how-tos/copilot-cli*
 *Slash commands cheat sheet: https://github.blog/ai-and-ml/github-copilot/a-cheat-sheet-to-slash-commands-in-github-copilot-cli/*
+
+
+# GitHub Copilot CLI Guide (Supplement)
+
+## A. How GitHub Copilot CLI Works Internally
+
+```text
+User Prompt
+      │
+      ▼
+GitHub Copilot CLI
+      │
+      ├── Reads current directory
+      ├── Reads AGENTS.md
+      ├── Reads git status
+      ├── Reads files
+      ├── Invokes MCP servers
+      ├── Invokes shell tools
+      ▼
+Foundation Model
+(Claude/GPT/Gemini)
+      │
+      ▼
+Plans → Tool Calls → Edits → Verification
+```
+
+The CLI acts as an orchestration layer that gathers context, invokes AI models, calls tools, validates results, and iterates until completion.
+
+---
+
+## B. Copilot CLI vs VS Code Copilot
+
+| VS Code Copilot | GitHub Copilot CLI |
+|-----------------|--------------------|
+| IDE-centric | Terminal-centric |
+| Editor context | Filesystem context |
+| Mostly file editing | Whole repository workflows |
+| Editor tools | Shell + MCP tools |
+| Interactive editing | Agentic automation |
+
+Copilot CLI also works over SSH, inside containers, WSL, remote Linux machines, and CI environments.
+
+---
+
+## C. Understanding Tool Calling
+
+```text
+User Prompt
+      │
+      ▼
+Planner
+      │
+      ▼
+Tool Calls
+(Read Files / GitHub / Shell / MCP)
+      │
+      ▼
+Model Reasons Again
+      │
+      ▼
+More Tool Calls
+      │
+      ▼
+Final Answer or Code Changes
+```
+
+Modern coding agents repeatedly invoke external tools instead of relying solely on model memory.
+
+---
+
+## D. Prompt Engineering for Copilot CLI
+
+Poor:
+
+```
+Fix this
+```
+
+Better:
+
+```
+Fix authentication bugs.
+```
+
+Excellent:
+
+```
+Find all authentication middleware,
+identify race conditions,
+add tests,
+preserve backward compatibility,
+update documentation.
+```
+
+Include constraints, acceptance criteria, output format, and testing expectations whenever possible.
+
+---
+
+## E. AGENTS.md Best Practices
+
+A high-quality AGENTS.md should document:
+
+- Technology stack
+- Coding conventions
+- Folder organization
+- Build commands
+- Test commands
+- Security rules
+- Naming conventions
+- Architecture
+- Things the AI should never do
+
+Example rules:
+
+```
+Never use SELECT *
+Always use prepared statements
+Run tests before completion
+Prefer Bootstrap 5
+Never edit generated files
+```
+
+---
+
+## F. Understanding MCP
+
+```text
+LLM
+ │
+ ├── Filesystem
+ ├── GitHub MCP
+ ├── Database MCP
+ ├── Jira MCP
+ ├── Slack MCP
+ └── Figma MCP
+```
+
+Model Context Protocol (MCP) provides a standard mechanism for AI agents to communicate with external systems through structured tools.
+
+---
+
+## G. Internal Agent Lifecycle
+
+```text
+User Prompt
+      ↓
+Gather Context
+      ↓
+Read AGENTS.md
+      ↓
+Build Prompt
+      ↓
+Model Planning
+      ↓
+Tool Calls
+      ↓
+Validation
+      ↓
+More Reasoning
+      ↓
+Completion
+```
+
+Agentic systems repeatedly alternate between reasoning and acting.
+
+---
+
+## Version Note
+
+GitHub Copilot CLI evolves rapidly. Commands, models, preview features, and subscription capabilities may change over time. Always verify features against the latest official documentation before relying on them in production workflows.
+
