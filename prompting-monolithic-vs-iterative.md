@@ -24,7 +24,7 @@ Instead:
 4. Commit working code frequently.
 5. Iterate based on testing.
 
-This approach is more maintainable, less expensive, and produces better results.
+This approach is more maintainable, less expensive, and produces better results. 
 
 ---
 
