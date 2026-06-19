@@ -485,6 +485,299 @@ Only then move to the next feature.
 
 ---
 
+# When Grouping Prompts Is Better
+
+Many developers assume that the smallest possible prompts always minimize token consumption. Surprisingly, that is not always true.
+
+There is a fixed overhead associated with every prompt:
+
+* Project context
+* Architecture
+* Coding standards
+* Existing APIs
+* Folder structure
+* Naming conventions
+
+If three separate prompts all require the same context, that context is repeated three times.
+
+## Example
+
+### Three Separate Prompts
+
+```
+Read architecture.md.
+
+Implement Login.
+```
+
+```
+Read architecture.md.
+
+Implement Registration.
+```
+
+```
+Read architecture.md.
+
+Implement Forgot Password.
+```
+
+Each prompt must reload the same architectural context.
+
+Approximate token usage:
+
+```
+Architecture   3,000
+Task             300
+
+Architecture   3,000
+Task             300
+
+Architecture   3,000
+Task             300
+
+----------------------
+
+Total ≈ 9,900 tokens
+```
+
+---
+
+### One Grouped Prompt
+
+```
+Read architecture.md.
+
+Implement:
+
+- Login
+- Registration
+- Forgot Password
+
+Generate only changed files.
+```
+
+Approximate token usage:
+
+```
+Architecture   3,000
+Tasks            900
+
+----------------------
+
+Total ≈ 3,900 tokens
+```
+
+The grouped prompt consumes significantly fewer tokens because the shared context is loaded only once.
+
+---
+
+# The Cohesion Principle
+
+Group together features that naturally belong together.
+
+Examples:
+
+## Authentication Module
+
+* Login
+* Logout
+* Registration
+* Password Reset
+* Email Verification
+* JWT Refresh
+
+These features share:
+
+* Database tables
+* Services
+* Security logic
+* Validation
+* API endpoints
+
+Generating them together usually produces cleaner code.
+
+---
+
+## Student Module
+
+* Student CRUD
+* Search
+* Filter
+* Pagination
+* Import
+* Export
+
+These features operate on the same entities and services and benefit from being generated together.
+
+---
+
+## Reports Module
+
+* Attendance Report
+* Grade Report
+* CSV Export
+* PDF Export
+* Charts
+* Filters
+
+Again, these belong together and should typically be generated in one prompt.
+
+---
+
+# Bad Prompt Grouping
+
+Avoid combining unrelated tasks.
+
+Example:
+
+```
+Implement:
+
+- Login
+- Docker Deployment
+- Analytics Dashboard
+- Email Templates
+- Teacher CRUD
+- CI/CD Pipeline
+```
+
+These tasks involve unrelated concerns and require different reasoning contexts.
+
+The resulting code is often less consistent and harder to maintain.
+
+---
+
+# Think in Vertical Slices
+
+Instead of generating:
+
+```
+Frontend
+Backend
+Database
+```
+
+Generate:
+
+```
+Student Management
+
+- UI
+- API
+- Database
+- Validation
+- Tests
+```
+
+A complete feature can be designed more coherently than isolated layers.
+
+---
+
+# Architectural Consistency
+
+Grouped prompts allow the AI to design reusable components.
+
+Instead of generating separate services:
+
+```
+login_service
+
+register_service
+
+password_service
+```
+
+A grouped prompt often produces:
+
+```
+AuthService
+
+login()
+
+register()
+
+forgotPassword()
+
+resetPassword()
+
+verifyEmail()
+```
+
+The resulting architecture is cleaner and more reusable.
+
+---
+
+# AI Optimization
+
+Large Language Models reason over the entire prompt simultaneously.
+
+When related requirements appear together, the model can:
+
+* Reuse helper functions
+* Share validation logic
+* Eliminate duplicate code
+* Create reusable APIs
+* Use consistent naming
+* Produce a cleaner architecture
+
+Splitting tightly related tasks into many tiny prompts often loses these advantages.
+
+---
+
+# Recommended Prompt Granularity
+
+| Prompt Size                                 | Recommendation          |
+| ------------------------------------------- | ----------------------- |
+| Entire application                          | ❌ Avoid                 |
+| Large subsystem                             | ⚠️ Sometimes acceptable |
+| One cohesive feature/module                 | ✅ Best choice           |
+| Tiny bug fix                                | ✅ Good                  |
+| One trivial task repeated hundreds of times | ❌ Inefficient           |
+
+---
+
+# Recommended Workflow
+
+```
+Requirements
+        ↓
+Architecture
+        ↓
+Database Design
+        ↓
+Authentication Module
+        ↓
+User Management Module
+        ↓
+Student Management Module
+        ↓
+Teacher Management Module
+        ↓
+Reports Module
+        ↓
+Notifications
+        ↓
+Deployment
+        ↓
+Optimization
+```
+
+Each module should be implemented with a single prompt that contains multiple closely related tasks.
+
+---
+
+# Final Guideline
+
+Do **not** optimize for the smallest possible prompt.
+
+Instead, optimize for **cohesion**.
+
+A good prompt should implement one logical feature or subsystem containing several related capabilities that naturally share architecture, services, data models, and APIs.
+
+This approach minimizes repeated context, reduces overall token consumption, improves architectural consistency, and produces higher-quality software than either a single monolithic prompt or hundreds of tiny prompts.
+
+
 # Final Recommendation
 
 For professional software development:
