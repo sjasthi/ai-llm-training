@@ -2,199 +2,143 @@
 
 ## Introduction
 
-Large Language Models (LLMs) are trained on massive datasets, but their built-in knowledge is static and limited to the time of training. To make them useful in real-world, dynamic environments, they are extended with external mechanisms that allow them to access, retrieve, compute, and interact with up-to-date or private information.
+Large Language Models (LLMs) are trained on massive datasets, but their
+built-in knowledge is static and limited to the time of training. To
+make them useful in real-world, dynamic environments, they are extended
+with external mechanisms that allow them to access, retrieve, compute,
+and interact with up-to-date or private information.
 
-This document introduces the major ways LLMs can be extended beyond their base training data.
+This document introduces the major ways LLMs can be extended beyond
+their base training data.
 
----
+------------------------------------------------------------------------
 
 ## 1. Tool / API Calls
 
-LLMs can interact with external systems through APIs to fetch real-time or specialized data.
-
-### Examples
-
-* Weather APIs (current conditions)
-* Stock market APIs
-* Google/Bing search APIs
-* Internal enterprise APIs (HR, CRM, billing)
-
-### How it works
-
-1. User asks a question requiring external data
-2. LLM generates a structured API request
-3. External system returns data
-4. LLM interprets and responds
-
-### Key idea
-
-LLM acts as a reasoning layer, while APIs provide live data.
-
----
+LLMs can interact with external systems through APIs to fetch real-time
+or specialized data.
 
 ## 2. Retrieval-Augmented Generation (RAG)
 
-RAG enables LLMs to use private or domain-specific knowledge without retraining.
-
-### How it works
-
-1. User query is embedded
-2. A vector database or search system retrieves relevant documents
-3. Retrieved text is passed into the LLM as context
-4. LLM generates an answer grounded in those documents
-
-### Data sources
-
-* PDFs
-* Company wikis (Notion, Confluence)
-* Internal documentation
-* Emails and support tickets
-
-### Key idea
-
-LLM + search over your data = grounded and up-to-date responses
-
----
+Uses vector search and retrieved documents to ground answers in private
+knowledge.
 
 ## 3. MCP (Model Context Protocol)
 
-MCP is a standardized protocol for connecting LLMs to external tools and data sources.
-
-### What it solves
-
-Instead of building custom integrations for every tool, MCP provides a unified interface.
-
-### Capabilities
-
-* Access databases
-* Query SaaS tools (Slack, GitHub, Jira)
-* Read/write filesystems
-* Call APIs in a standardized way
-
-### Key idea
-
-MCP acts like a "USB-C port" for AI systems, enabling plug-and-play tool integration.
-
----
+A standardized protocol for connecting LLMs to external tools and data
+sources.
 
 ## 4. Function Calling / Tool Use
 
-Modern LLMs can request structured function execution during reasoning.
-
-### Example
-
-```json
-{
-  "tool": "get_weather",
-  "arguments": {
-    "location": "Minneapolis"
-  }
-}
-```
-
-### Flow
-
-1. LLM decides a tool is needed
-2. Generates structured function call
-3. System executes function
-4. Result is passed back to LLM
-
-### Key idea
-
-LLM delegates tasks instead of hallucinating answers.
-
----
+LLMs request structured function execution instead of hallucinating
+answers.
 
 ## 5. Web Browsing / Agentic Search
 
-Some LLM systems can actively browse the internet.
-
-### Capabilities
-
-* Search queries
-* Click and read web pages
-* Extract and summarize content
-
-### Key idea
-
-LLM becomes an active information seeker, not just a passive responder.
-
----
+Allows models to actively search and summarize current information.
 
 ## 6. Memory Systems
 
-Memory enables personalization and continuity across sessions.
-
-### Types of memory
-
-* User preferences
-* Past conversations
-* Long-term stored facts
-
-### Storage systems
-
-* Key-value databases
-* Vector memory stores
-
-### Key idea
-
-LLM adapts to the user over time without retraining.
-
----
+Stores user preferences and long-term information across sessions.
 
 ## 7. Code Execution Environments
 
-LLMs can execute code to compute or analyze data.
-
-### Examples
-
-* Python REPL for data analysis
-* SQL queries on databases
-* Simulations and calculations
-
-### Key idea
-
-LLM becomes capable of precise computation instead of approximate reasoning.
-
----
+Uses Python, SQL, and other runtimes for accurate computation.
 
 ## 8. Agent Frameworks
 
-Agents combine multiple tools into reasoning loops.
+Coordinates multi-step reasoning and tool orchestration.
 
-### Capabilities
+## 9. Prompt Engineering and In-Context Learning
 
-* Planning multi-step tasks
-* Calling APIs and tools repeatedly
-* Maintaining state across steps
+-   Zero-shot prompting
+-   One-shot prompting
+-   Few-shot prompting
+-   Chain-of-Thought prompting
+-   Role prompting
+-   Structured prompting
 
-### Frameworks
+**Key idea:** Better prompts often produce dramatically better results
+without changing model weights.
 
-* LangChain
-* LlamaIndex
-* AutoGPT-style systems
+## 10. Fine-Tuning and LoRA
 
-### Key idea
+Fine-tuning changes model behavior permanently while LoRA/PEFT provides
+lightweight adaptation.
 
-LLM acts as a decision-making engine orchestrating tools.
+## 11. Embeddings and Vector Databases
 
----
+Embeddings enable semantic search and power RAG systems.
 
-## Summary
+Popular vector databases: - Pinecone - Chroma - Milvus - Qdrant -
+Weaviate - pgvector
 
-| Mechanism        | Purpose                              |
-| ---------------- | ------------------------------------ |
-| APIs / Tools     | Real-time structured data            |
-| RAG              | Private / domain knowledge retrieval |
-| MCP              | Standard tool integration layer      |
-| Function Calling | Structured tool execution            |
-| Browsing         | Web-based information access         |
-| Memory           | Personalization and persistence      |
-| Code Execution   | Computation and analysis             |
-| Agents           | Multi-step orchestration             |
+## 12. Multi-Agent Systems
 
----
+Multiple specialized agents collaborate to solve complex tasks.
+
+## 13. Human-in-the-Loop
+
+Humans approve or supervise critical AI decisions.
+
+------------------------------------------------------------------------
+
+# Comparison of Extension Techniques
+
+  Technique            Retrains Model?   External Data?   Real-Time?   Cost
+  -------------------- ----------------- ---------------- ------------ -----------
+  Prompt Engineering   No                No               Yes          Very Low
+  Few-shot Learning    No                Temporary        Yes          Very Low
+  Tool/API Calls       No                Yes              Yes          Low
+  Function Calling     No                Yes              Yes          Low
+  RAG                  No                Yes              Yes          Low
+  MCP                  No                Yes              Yes          Low
+  Memory               No                Yes              Yes          Low
+  Code Execution       No                Runtime          Yes          Low
+  Agents               No                Yes              Yes          Medium
+  Fine-Tuning          Yes               Internalized     No           Medium
+  LoRA                 Yes               Internalized     No           Medium
+  Full Training        Yes               Internalized     No           Very High
+
+------------------------------------------------------------------------
+
+# Choosing the Right Technique
+
+  Need                       Recommended Technique
+  -------------------------- -----------------------
+  Better answers             Prompt Engineering
+  Current information        Tool/API Calls
+  Company documents          RAG
+  Enterprise integrations    MCP
+  Computation                Code Execution
+  Personalization            Memory
+  Multi-step automation      Agents
+  Domain-specific behavior   Fine-Tuning / LoRA
+
+Decision Flow:
+
+``` text
+Need Better AI?
+    |
+    +-- Better behavior? --> Prompt Engineering / Fine-Tuning
+    |
+    +-- New knowledge?
+            |
+            +-- Live? --> APIs
+            |
+            +-- Private? --> RAG
+            |
+            +-- Compute? --> Code Execution
+            |
+            +-- Workflow? --> Agents
+            |
+            +-- Personalized? --> Memory
+            |
+            +-- Enterprise Systems? --> MCP
+```
 
 ## Final Thought
 
-Modern LLM systems are no longer just models—they are **systems that combine reasoning (LLM) + tools + data + memory + execution**. This makes them far more powerful and practical than standalone models.
+Modern AI systems combine reasoning, retrieval, tools, memory,
+execution, and orchestration to extend LLM capabilities far beyond their
+original training data.
