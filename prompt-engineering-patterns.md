@@ -398,7 +398,7 @@ Only fix grammar errors. Do not modify content.
 
 ---
 
-#### 36. Context Budget
+#### 36. Context Budget 
 
 **Definition:** Manage token usage explicitly.
 
