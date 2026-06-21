@@ -4,270 +4,216 @@
 
 Prompt patterns are reusable design structures that help guide Large Language Models (LLMs) to produce better, more reliable, and more structured outputs.
 
-This guide contains **23 practical prompt patterns** used in education, software engineering, AI agents, and business applications.
+This guide contains **37 practical prompt patterns** used in software engineering, AI agents, learning, and business applications.
 
 ---
 
-# 1. Persona Pattern
+## Section A — Foundational Patterns
 
-Assign a role to the AI.
+### 1. Persona
+  
+**Definition:** Assign a role to shape tone, expertise, and style.**When to use:** When domain expertise or perspective matters.  
+**Example:**Act as a senior DevOps architect. Review this CI/CD pipeline and suggest improvements.
 
-```text id="p1"
-Act as a [role] and perform the task.
-```
+### 2. Audience
+  
+**Definition:** Tailor output to a specific audience level.**When to use:** When clarity and communication style matter.  
+**Example:**Explain Kubernetes autoscaling to a non-technical business stakeholder.
 
----
+### 3. Template
+  
+**Definition:** Enforce structured output.**When to use:** For consistency and reuse.  
+**Example:**Provide output in this format:
+- Title:
+- Summary:
+- Risks:
+- Recommendations:
 
-# 2. Flipped Interaction Pattern
+### 4. Output Constraints
+  
+**Definition:** Restrict format, length, or style.**When to use:** For precision and token control.  
+**Example:**Summarize in 5 bullets, max 12 words each.
 
-AI asks questions before answering.
+### 5. Meta Language
+  
+**Definition:** Define reusable instructions or command shortcuts.**When to use:** For complex workflows or repeated commands.  
+**Example:**When I say "Audit Mode", perform:
+- Risk analysis
+- Compliance assessment
+- Gap identification
 
-```text id="p2"
-Ask me questions one at a time until you have enough information.
-```
-
----
-
-# 3. N-Shot Prompting Pattern
-
-Use examples to guide output.
-
-```text id="p3"
-A → B
+### 6. N-Shot Prompting
+  
+**Definition:** Provide examples to guide model behavior.**When to use:** When output must follow a pattern.  
+**Example:**A → B
 C → D
 X →
-```
 
----
+### 7. Directional Stimulus
+  
+**Definition:** Guide attention using hints or focus areas.**When to use:** When you want to steer reasoning without strict constraints.  
+**Example:**Focus on:
+- Security risks
+- Compliance gaps
 
-# 4. Directional Stimulus Pattern
+## Section B — Reasoning Patterns
 
-Guide attention using hints.
+### 8. Chain-of-Thought
+  
+**Definition:** Step-by-step reasoning.**Example:**Solve step-by-step and explain reasoning.
 
-```text id="p4"
-Focus on:
-- Key idea 1
-- Key idea 2
-```
+### 9. Chain-of-Questions
+  
+**Definition:** Solve via structured questions.**Example:**Answer in order:
+- What is the problem?
+- What are constraints?
+- What approaches exist?
+- Final answer?
 
----
+### 10. Least-to-Most
+  
+**Definition:** Start simple → increase complexity.**Example:**Break this problem into simple steps and gradually build to full solution.
 
-# 5. Template Pattern
+### 11. Tree-of-Thought
+  
+**Definition:** Explore multiple reasoning paths before selecting best.**Example:**Generate 3 approaches, evaluate pros/cons, then pick best.
 
-Force structured output.
+### 12. Self-Consistency
+  
+**Definition:** Generate multiple answers and select most consistent.**Example:**Solve this 3 different ways and select the most consistent answer.
 
-```text id="p5"
-Title:
-Summary:
-Key Points:
-```
+### 13. ReAct (Reason + Act)
+  
+**Definition:** Combine reasoning with actions/tool use.**Example:**Think → Act → Observe → Refine until solution is complete.
 
----
+## Section C — Evaluation Patterns
 
-# 6. Meta Language Pattern
+### 14. Critic
+  
+**Definition:** Evaluate and suggest improvements.**Example:**Review this design and identify weaknesses.
 
-Create reusable commands.
+### 15. Reflection
+  
+**Definition:** Generate → evaluate → improve.**Example:**Create a solution, then critique it, then improve it.
 
-```text id="p6"
-When I say "Summary", do X, Y, Z.
-```
-
----
-
-# 7. Chain-of-Thought Pattern
-
-Encourage step-by-step reasoning.
-
-```text id="p7"
-Solve step by step and explain reasoning.
-```
-
----
-
-# 8. Socratic Tutor Pattern
-
-Teach using guided discovery.
-
-```text id="p8"
-Do not give the answer. Ask guiding questions.
-```
-
----
-
-# 9. Chain-of-Questions Pattern (NEW)
-
-Break reasoning into a structured sequence of questions.
-
-```text id="p9"
-Solve this by answering these questions in order:
-1. What is being asked?
-2. What do we know?
-3. What rules apply?
-4. What is the solution?
-```
-
----
-
-# 10. Critic Pattern
-
-Review and improve content.
-
-```text id="p10"
-Review the output and identify improvements.
-```
-
----
-
-# 11. Reflection Pattern
-
-Generate → evaluate → improve.
-
-```text id="p11"
-Create a solution, then evaluate it and improve it.
-```
-
----
-
-# 12. Self-Refine Pattern (NEW)
-
-Iterative improvement loop.
-
-```text id="p12"
-Step 1: Generate answer
-Step 2: Critique it
-Step 3: Improve it
+### 16. Self-Refine
+  
+**Definition:** Iterative improvement loop.**Example:**Step 1: Generate
+Step 2: Critique
+Step 3: Improve
 Step 4: Final answer
-```
 
----
-
-# 13. Chain-of-Verification Pattern (NEW)
-
-Verify claims systematically.
-
-```text id="p13"
-Answer the question.
-
-Then verify:
+### 17. Chain-of-Verification
+  
+**Definition:** Systematic validation.**Example:**Verify:
 - Facts
 - Logic
-- Calculations
+- Assumptions
 
-Revise if needed.
-```
-
----
-
-# 14. Step-by-Step Decomposition Pattern
-
-Break tasks into smaller parts.
-
-```text id="p14"
-Break into phases and solve each phase.
-```
-
----
-
-# 15. Audience Pattern
-
-Adapt to target audience.
-
-```text id="p15"
-Explain to a 7th-grade student.
-```
-
----
-
-# 16. Output Constraints Pattern
-
-Control format and limits.
-
-```text id="p16"
-Answer in 5 bullets, max 15 words each.
-```
-
----
-
-# 17. Expert Panel Pattern
-
-Multiple expert perspectives.
-
-```text id="p17"
-Analyze from teacher, parent, and student perspectives.
-```
-
----
-
-# 18. Debate Pattern
-
-Present opposing views.
-
-```text id="p18"
-Present arguments for and against.
-```
-
----
-
-# 19. Checklist Pattern
-
-Evaluate using criteria.
-
-```text id="p19"
-Check:
+### 18. Checklist
+  
+**Definition:** Evaluate against predefined criteria.**Example:**Check for:
 - Security
 - Performance
-- Scalability
-```
+- Compliance
 
----
+## Section D — Multi-Perspective Patterns
 
-# 20. Self-Consistency Pattern
+### 19. Expert Panel
+  
+**Definition:** Multiple expert viewpoints.**Example:**Analyze from:
+- Security architect
+- DevOps lead
+- Product manager
 
-Generate multiple solutions and compare.
+### 20. Debate
+  
+**Definition:** Present opposing views.**Example:**Provide arguments for and against microservices adoption.
 
-```text id="p20"
-Solve in multiple ways and select best answer.
-```
+### 21. Socratic Tutor
+  
+**Definition:** Guide via questions instead of answers.**Example:**Do not answer directly. Ask questions to guide learning.
 
----
+## Section E — Agentic & Workflow Patterns
 
-# 21. Tree-of-Thought Pattern
+### 22. Planning
+  
+**Definition:** Decompose tasks into executable steps.**Example:**Break this into execution plan with phases and milestones.
 
-Explore multiple reasoning paths.
+### 23. Tool Selection
+  
+**Definition:** Decide which tools/actions to use.**Example:**Select appropriate tools for:
+- Data retrieval
+- Analysis
+- Visualization
 
-```text id="p21"
-Generate options, evaluate, and select best path.
-```
+### 24. Retrieval
+  
+**Definition:** Pull in relevant knowledge before answering.**Example:**Use available documents to answer with citations.
 
----
+### 25. Playbook
+  
+**Definition:** Structured, repeatable workflow.**Example:**Create a step-by-step playbook for incident response.
 
-# 22. Least-to-Most Pattern
+### 26. Progressive Disclosure
+  
+**Definition:** Ask clarifying questions before full answer.**Example:**Ask questions one at a time until problem is clear.
 
-Start simple → build complexity.
+### 27. Flipped Interaction
+  
+**Definition:** Ask questions before answering to gather context.**When to use:** When requirements are unclear.  
+**Example:**Ask me one question at a time until you can answer accurately.
 
-```text id="p22"
-Solve in increasing difficulty steps.
-```
+### 28. Agent Handoff
+  
+**Definition:** Transition between roles/agents.**Example:**First act as analyst, then switch to reviewer, then final approver.
 
----
+### 29. Step-by-Step Decomposition
+  
+**Definition:** Break tasks into sequential phases.**When to use:** For complex workflows.  
+**Example:**Break into phases:
+1. Data collection
+2. Analysis
+3. Implementation
+4. Validation
 
-# 23. ReAct Pattern (Reason + Act)
+## Section F — Token Optimization Patterns
 
-Reason, act, observe, repeat.
+### 30. Context Compression
+  
+**Definition:** Summarize context to reduce tokens.**Example:**Summarize this document into key points before analysis.
 
-```text id="p23"
-Think → Act → Observe → Update reasoning.
-```
+### 31. Context Reset
+  
+**Definition:** Clear prior context to avoid drift.**Example:**Ignore all previous instructions. Start fresh with this task.
 
----
+### 32. Session Isolation
+  
+**Definition:** Keep tasks independent.**Example:**Treat this request as a separate session from prior conversation.
 
-# Key Insight
+### 33. File Reference
+  
+**Definition:** Operate only on provided artifacts.**Example:**Use only the attached file for your analysis.
 
-The real power of prompt engineering comes from **combining patterns**, not using them individually.
+### 34. Diff Pattern
+  
+**Definition:** Show only changes.**Example:**Provide only the differences between version A and B.
 
+### 35. One-Hop Change
+  
+**Definition:** Make minimal targeted modification.**Example:**Only fix grammar errors. Do not modify content.
+
+### 36. Context Budget
+  
+**Definition:** Manage token usage explicitly.**Example:**Limit reasoning + output to under 300 tokens.
+
+### 37. Cost-Aware
+  
+**Definition:** Optimize for cost-efficient responses.**Example:**Provide concise answer with minimal tokens while preserving accuracy.
+
+## Key Insight
+  
+The real power comes from **pattern composition**:  
 Example:
-
-* Persona + Audience + Template + Least-to-Most + Reflection
-
----
-
+Persona + Audience + Template + Least-to-Most + Reflection  
+→ Produces reliable, structured, and high-quality outputs
