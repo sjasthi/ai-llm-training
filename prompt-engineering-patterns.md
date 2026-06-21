@@ -1,4 +1,4 @@
-# Prompt Engineering Patterns: A Reference Guide
+# Prompt Engineering Patterns: A Reference Guide 
 
 ## Introduction
 
