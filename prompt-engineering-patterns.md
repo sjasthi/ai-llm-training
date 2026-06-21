@@ -1,17 +1,17 @@
-## Prompt Engineering Patterns: A Reference Guide
+## 🧠 Prompt Engineering Patterns: A Reference Guide
 
-### Introduction
+### 📘 Introduction
 
 Prompt patterns are reusable design structures that help guide Large Language Models (LLMs) to produce better, more reliable, and more structured outputs.
 This guide contains **37 practical prompt patterns** used in software engineering, AI agents, learning, and business applications.
 
 ---
 
-### Section A — Foundational Patterns
+### 🧱 Section A — Foundational Patterns
 
 ---
 
-#### 1. Persona
+#### 1. 🎭 Persona
 
 **Definition:** Assign a role to shape tone, expertise, and style.
 
@@ -22,7 +22,7 @@ Act as a senior DevOps architect. Review this CI/CD pipeline and suggest improve
 
 ---
 
-#### 2. Audience
+#### 2. 👥 Audience
 
 **Definition:** Tailor output to a specific audience level.
 
@@ -33,7 +33,7 @@ Explain Kubernetes autoscaling to a non-technical business stakeholder.
 
 ---
 
-#### 3. Template
+#### 3. 🧩 Template
 
 **Definition:** Enforce structured output.
 
@@ -48,7 +48,7 @@ Provide output in this format:
 
 ---
 
-#### 4. Output Constraints
+#### 4. 📏 Output Constraints
 
 **Definition:** Restrict format, length, or style.
 
@@ -59,7 +59,7 @@ Summarize in 5 bullets, max 12 words each.
 
 ---
 
-#### 5. Meta Language
+#### 5. 🏷️ Meta Language
 
 **Definition:** Define reusable instructions or command shortcuts.
 
@@ -73,7 +73,7 @@ When I say "Audit Mode", perform:
 
 ---
 
-#### 6. N-Shot Prompting
+#### 6. 🧪 N-Shot Prompting
 
 **Definition:** Provide examples to guide model behavior.
 
@@ -86,7 +86,7 @@ X →
 
 ---
 
-#### 7. Directional Stimulus
+#### 7. 🎯 Directional Stimulus
 
 **Definition:** Guide attention using hints or focus areas.
 
@@ -99,11 +99,11 @@ Focus on:
 
 ---
 
-### Section B — Reasoning Patterns
+### 🧠 Section B — Reasoning Patterns
 
 ---
 
-#### 8. Chain-of-Thought
+#### 8. 🪜 Chain-of-Thought
 
 **Definition:** Step-by-step reasoning.
 
@@ -112,7 +112,7 @@ Solve step-by-step and explain reasoning.
 
 ---
 
-#### 9. Chain-of-Questions
+#### 9. ❓ Chain-of-Questions
 
 **Definition:** Solve via structured questions.
 
@@ -125,7 +125,7 @@ Answer in order:
 
 ---
 
-#### 10. Least-to-Most
+#### 10. 📈 Least-to-Most
 
 **Definition:** Start simple → increase complexity.
 
@@ -134,7 +134,7 @@ Break this problem into simple steps and gradually build to full solution.
 
 ---
 
-#### 11. Tree-of-Thought
+#### 11. 🌳 Tree-of-Thought
 
 **Definition:** Explore multiple reasoning paths before selecting best.
 
@@ -143,7 +143,7 @@ Generate 3 approaches, evaluate pros/cons, then pick best.
 
 ---
 
-#### 12. Self-Consistency
+#### 12. 🔁 Self-Consistency
 
 **Definition:** Generate multiple answers and select most consistent.
 
@@ -152,7 +152,7 @@ Solve this 3 different ways and select the most consistent answer.
 
 ---
 
-#### 13. ReAct (Reason + Act)
+#### 13. ⚡ ReAct (Reason + Act)
 
 **Definition:** Combine reasoning with actions/tool use.
 
@@ -161,11 +161,11 @@ Think → Act → Observe → Refine until solution is complete.
 
 ---
 
-### Section C — Evaluation Patterns
+### 🔍 Section C — Evaluation Patterns
 
 ---
 
-#### 14. Critic
+#### 14. 🧾 Critic
 
 **Definition:** Evaluate and suggest improvements.
 
@@ -174,7 +174,7 @@ Review this design and identify weaknesses.
 
 ---
 
-#### 15. Reflection
+#### 15. 🔁 Reflection
 
 **Definition:** Generate → evaluate → improve.
 
@@ -183,7 +183,7 @@ Create a solution, then critique it, then improve it.
 
 ---
 
-#### 16. Self-Refine
+#### 16. 🔧 Self-Refine
 
 **Definition:** Iterative improvement loop.
 
@@ -195,7 +195,7 @@ Step 4: Final answer
 
 ---
 
-#### 17. Chain-of-Verification
+#### 17. ✅ Chain-of-Verification
 
 **Definition:** Systematic validation.
 
@@ -207,7 +207,7 @@ Verify:
 
 ---
 
-#### 18. Checklist
+#### 18. 📋 Checklist
 
 **Definition:** Evaluate against predefined criteria.
 
@@ -219,11 +219,11 @@ Check for:
 
 ---
 
-### Section D — Multi-Perspective Patterns
+### 🧑‍🤝‍🧑 Section D — Multi-Perspective Patterns
 
 ---
 
-#### 19. Expert Panel
+#### 19. 🧠 Expert Panel
 
 **Definition:** Multiple expert viewpoints.
 
@@ -235,7 +235,7 @@ Analyze from:
 
 ---
 
-#### 20. Debate
+#### 20. ⚖️ Debate
 
 **Definition:** Present opposing views.
 
@@ -244,7 +244,7 @@ Provide arguments for and against microservices adoption.
 
 ---
 
-#### 21. Socratic Tutor
+#### 21. 🎓 Socratic Tutor
 
 **Definition:** Guide via questions instead of answers.
 
@@ -253,11 +253,11 @@ Do not answer directly. Ask questions to guide learning.
 
 ---
 
-### Section E — Agentic & Workflow Patterns
+### ⚙️ Section E — Agentic & Workflow Patterns
 
 ---
 
-#### 22. Planning
+#### 22. 🗺️ Planning
 
 **Definition:** Decompose tasks into executable steps.
 
@@ -266,7 +266,7 @@ Break this into execution plan with phases and milestones.
 
 ---
 
-#### 23. Tool Selection
+#### 23. 🛠️ Tool Selection
 
 **Definition:** Decide which tools/actions to use.
 
@@ -278,7 +278,7 @@ Select appropriate tools for:
 
 ---
 
-#### 24. Retrieval
+#### 24. 📚 Retrieval
 
 **Definition:** Pull in relevant knowledge before answering.
 
@@ -287,7 +287,7 @@ Use available documents to answer with citations.
 
 ---
 
-#### 25. Playbook
+#### 25. 📖 Playbook
 
 **Definition:** Structured, repeatable workflow.
 
@@ -296,7 +296,7 @@ Create a step-by-step playbook for incident response.
 
 ---
 
-#### 26. Progressive Disclosure
+#### 26. 🔍 Progressive Disclosure
 
 **Definition:** Ask clarifying questions before full answer.
 
@@ -305,7 +305,7 @@ Ask questions one at a time until problem is clear.
 
 ---
 
-#### 27. Flipped Interaction
+#### 27. 🔄 Flipped Interaction
 
 **Definition:** Ask questions before answering to gather context.
 
@@ -316,7 +316,7 @@ Ask me one question at a time until you can answer accurately.
 
 ---
 
-#### 28. Agent Handoff
+#### 28. 🔁 Agent Handoff
 
 **Definition:** Transition between roles/agents.
 
@@ -325,7 +325,7 @@ First act as analyst, then switch to reviewer, then final approver.
 
 ---
 
-#### 29. Step-by-Step Decomposition
+#### 29. 🧱 Step-by-Step Decomposition
 
 **Definition:** Break tasks into sequential phases.
 
@@ -340,11 +340,11 @@ Break into phases:
 
 ---
 
-### Section F — Token Optimization Patterns
+### 💰 Section F — Token Optimization Patterns
 
 ---
 
-#### 30. Context Compression
+#### 30. 🗜️ Context Compression
 
 **Definition:** Summarize context to reduce tokens.
 
@@ -353,7 +353,7 @@ Summarize this document into key points before analysis.
 
 ---
 
-#### 31. Context Reset
+#### 31. 🔄 Context Reset
 
 **Definition:** Clear prior context to avoid drift.
 
@@ -362,7 +362,7 @@ Ignore all previous instructions. Start fresh with this task.
 
 ---
 
-#### 32. Session Isolation
+#### 32. 🧳 Session Isolation
 
 **Definition:** Keep tasks independent.
 
@@ -371,7 +371,7 @@ Treat this request as a separate session from prior conversation.
 
 ---
 
-#### 33. File Reference
+#### 33. 📎 File Reference
 
 **Definition:** Operate only on provided artifacts.
 
@@ -380,7 +380,7 @@ Use only the attached file for your analysis.
 
 ---
 
-#### 34. Diff Pattern
+#### 34. 🔍 Diff Pattern
 
 **Definition:** Show only changes.
 
@@ -389,7 +389,7 @@ Provide only the differences between version A and B.
 
 ---
 
-#### 35. One-Hop Change
+#### 35. 🎯 One-Hop Change
 
 **Definition:** Make minimal targeted modification.
 
@@ -398,7 +398,7 @@ Only fix grammar errors. Do not modify content.
 
 ---
 
-#### 36. Context Budget 
+#### 36. 📊 Context Budget
 
 **Definition:** Manage token usage explicitly.
 
@@ -407,7 +407,7 @@ Limit reasoning + output to under 300 tokens.
 
 ---
 
-#### 37. Cost-Aware
+#### 37. 💡 Cost-Aware
 
 **Definition:** Optimize for cost-efficient responses.
 
@@ -416,7 +416,7 @@ Provide concise answer with minimal tokens while preserving accuracy.
 
 ---
 
-### Key Insight
+### 🔑 Key Insight
 
 The real power comes from **pattern composition**:
 
