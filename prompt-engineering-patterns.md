@@ -22,7 +22,7 @@ Understand the structural building blocks that shape tone, format, and control.
 **Example:**
 Act as a senior DevOps architect. Review this CI/CD pipeline and suggest improvements.
 
-**Note:**
+**Note:** 
 Use this pattern to show how the exact same task changes when the model is asked to act as an architect, auditor, product manager, or instructor.
 
 **Practice Exercise:**
