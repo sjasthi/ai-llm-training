@@ -5,15 +5,15 @@ purpose.
 
 ## 1. Agent Frameworks
 
-  Framework               Best For                        Language
-  ----------------------- ------------------------------- --------------------
-  LangChain               General-purpose agents          Python, JavaScript
-  LangGraph               Stateful production workflows   Python, JavaScript
-  Microsoft AutoGen       Multi-agent systems             Python
-  CrewAI                  Role-based AI teams             Python
-  Google ADK              Gemini-based agents             Python
-  OpenAI Agents SDK       OpenAI-native agents            Python
-  Amazon Strands Agents   AWS agents                      Python
+| Framework | Best For | Language |
+|-----------|----------|----------|
+| **LangChain** | General-purpose agents | Python, JavaScript |
+| **LangGraph** | Stateful production workflows | Python, JavaScript |
+| **Microsoft AutoGen** | Multi-agent systems | Python |
+| **CrewAI** | Role-based AI teams | Python |
+| **Google ADK** | Gemini-based agents | Python |
+| **OpenAI Agents SDK** | OpenAI-native agents | Python |
+| **Amazon Strands Agents** | AWS agents | Python |
 
 ## 2. LLM Orchestration
 
